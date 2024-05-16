@@ -1,0 +1,213 @@
+:root{
+    --primary-color:  #2ff7dc;
+    --secondary-color: rgb(21, 19, 30);
+    --crema: #e0a178;
+    --amarillo: #d2f20b;
+    --naranja: #ff7309;
+    --celeste: #35b49e;
+    --rojo:#6e1131;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    padding-bottom: 6rem;
+}
+.titulo{
+    color: var(--amarillo);
+}
+.color-primary{
+    color: var(--primary-color);
+}
+body{
+    background-image: url(/img/fondo.gif);
+    background-size: contain;
+}
+
+.ranking-img{
+    display: inline-block;
+    background-image: url(../img/perfil\(6\).jpeg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    box-shadow: 0 2px 6px #0003;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0px 0px 2rem rgba(255, 255, 255, 0.2);
+}
+.ranking-img-winner{
+    height: 100px;
+    max-width: 100px;
+    margin-top: -55px;
+}
+.ranking-img-border{
+    position: relative;
+    max-width: 70px;
+    height: 70px;
+    background-color: blue;
+    border-radius: 50%;
+}
+.col, .col-1, .col-2, .col-3{
+    display: flex;
+    align-items: center;
+}
+.card-body{
+    z-index: 2;
+}
+.card{
+    position: relative;
+    overflow: hidden; 
+    cursor: pointer;
+}
+.card:hover::before{
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: -20vw;
+    width: 140%;
+    height: 20vw;
+    background-image: linear-gradient(var(--celeste), var(--amarillo));
+    animation: rotate 3s infinite linear;
+}
+.card:hover::after{
+    content: "";
+    position: absolute;
+    background-color: whitesmoke;
+    inset: 5px;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.btn-score{
+    border: 1px solid var(--primary-color);
+    border-radius: 25px;
+    width: 100px;
+    height: 100%;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-score:hover{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+.contenedor{
+    max-width: 850px;
+    margin: 0 auto;
+    background-image: url(/img/fondo.gif);
+}
+.bg-contenedor{
+    background-color: rgba(21, 19, 30, 0.98);
+}
+circle {
+    fill: none;
+    stroke: #6d6d6d;
+    stroke-width: 1;
+    transform-origin: 50%;
+    stroke-dasharray: 100 100;
+    stroke-linecap: round;
+}
+circle:nth-child(2) {
+    stroke: var(--color);
+    stroke-width: 3;
+    stroke-dasharray: 0 100;
+    transform: rotate(-90deg);
+    animation: expand 2s linear forwards;
+}
+
+circle:nth-child(3){
+    stroke: white;
+    stroke-width: 1;
+    stroke-dasharray: 0  100;
+    transform: rotate(-86deg);
+    animation: expandInner 2s linear forwards;
+
+}
+.perfil-porcentaje {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil-porcentaje .ranking-img {
+    position: absolute;
+    display: inline-block;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+}
+[data-top][data-icon-top]::after, [data-top][data-icon-bottom]::after {
+    content:attr(data-top) ;
+    font-size: 1.5rem;
+    position: absolute;
+    color: white;
+    font-weight: lighter;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+[data-top][data-icon-top]::before, [data-top][data-icon-bottom]::before {
+    content:attr(data-icon-top) attr(data-icon-bottom);
+    font-size: 1.5rem;
+    position: absolute;
+    font-weight: bold;
+    top: -3rem;
+    left: -3.4rem;
+    right: 2px;
+}
+[data-icon-bottom]::after {
+    content: attr(data-icon-bottom);
+    position: absolute;
+    font-size: .8rem;
+    font-weight: bold;
+    color: var(--rojo);
+    bottom: -.4rem;
+    left: .6rem;
+}
+th{
+    position: relative;
+    width: 45%;
+}
+[data-icon-top]::before {
+    content: attr(data-icon-top);
+    position: absolute;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--rojo);
+    top: 1rem;
+    left: 1.1rem;
+}
+[data-icon-top]::before{
+    color:var(--celeste);
+}
+[data-icon-bottom]::before {
+    color: var(--rojo);
+}
+
+.winner{
+    margin-top: -40px;
+}
+
+.winner .ranking-img{
+    width: 68px;
+    height: 68px;
+}
+@keyframes expand{
+    to{
+        stroke-dasharray: var(--porcentaje) 100;
+    }
+}
+@keyframes expandInner{
+    to{
+        stroke-dasharray: var(--dentro) 100;
+    }
+}
