@@ -6,48 +6,44 @@
     --naranja: #ff7309;
     --celeste: #35b49e;
     --rojo:#6e1131;
+    --dark:33, 37, 41;
 }
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-header{
-    padding-bottom: 6rem;
+
+h1{
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--primary-color);
 }
-.titulo{
-    color: var(--amarillo);
+h2{
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--primary-color);
+}
+h3{
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--primary-color);
+}
+h4{
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--primary-color);
 }
 .color-primary{
     color: var(--primary-color);
 }
-body{
-    background-image: url(/img/fondo.gif);
-    background-size: contain;
-}
-
 .ranking-img{
     display: inline-block;
-    background-image: url(../img/perfil\(6\).jpeg);
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center;
+    object-fit: cover;
     box-shadow: 0 2px 6px #0003;
     border-radius: 50%;
     position: relative;
     box-shadow: 0px 0px 2rem rgba(255, 255, 255, 0.2);
-}
-.ranking-img-winner{
-    height: 100px;
-    max-width: 100px;
-    margin-top: -55px;
-}
-.ranking-img-border{
-    position: relative;
-    max-width: 70px;
-    height: 70px;
-    background-color: blue;
-    border-radius: 50%;
 }
 .col, .col-1, .col-2, .col-3{
     display: flex;
@@ -58,10 +54,17 @@ body{
 }
 .card{
     position: relative;
-    overflow: hidden; 
     cursor: pointer;
+    overflow: hidden;
 }
-.card:hover::before{
+.top-3{
+    padding-top: 6rem;
+    transition: all 0.4s ease ;
+}
+.top-3:hover{
+    scale: 1.1;
+}
+main section > .card:hover::before{
     content: "";
     position: absolute;
     top: 20%;
@@ -71,11 +74,12 @@ body{
     background-image: linear-gradient(var(--celeste), var(--amarillo));
     animation: rotate 3s infinite linear;
 }
-.card:hover::after{
+main section> .card:hover::after{
     content: "";
     position: absolute;
-    background-color: whitesmoke;
+    background-color: rgb(var(--dark));
     inset: 5px;
+    
 }
 
 @keyframes rotate{
@@ -84,6 +88,7 @@ body{
     }
     100%{
         transform: rotate(360deg);
+        
     }
 }
 .btn-score{
@@ -102,11 +107,77 @@ body{
 .contenedor{
     max-width: 850px;
     margin: 0 auto;
-    background-image: url(/img/fondo.gif);
 }
+/*Fondo */
 .bg-contenedor{
-    background-color: rgba(21, 19, 30, 0.98);
+    background-color: rgba(21, 19, 30, 0.87);
+    overflow: hidden;
 }
+.bg-body{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, var(--secondary-color),  rgb(46, 63, 141));
+    z-index: -1;
+}
+.bg-body > div{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border: 6px solid var(--primary-color);
+    border-color: var(--amarillo);
+
+}
+.bg-body > div:nth-child(even){
+    border-color: var(--primary-color);
+}
+.bg-body > div:nth-child(1){
+    top: 32%;
+    left: 96%;
+    animation: animate 10s linear infinite ;
+}
+.bg-body > div:nth-child(2){
+    top: 90%;
+    left: 2%;
+    animation: animate 10s linear infinite ;
+
+}
+.bg-body > div:nth-child(3){
+    top: 67%;
+    left: 10%;
+    animation: animate 10s linear infinite ;
+}
+.bg-body > div:nth-child(4){
+    top: 57%;
+    left: 88%;
+    animation: animate 10s linear infinite ;
+}
+.bg-body > div:nth-child(5){
+    top: 91%;
+    left: 91%;
+    animation: animate 10s linear infinite ;
+}
+.bg-body > div:nth-child(6){
+    top: 44%;
+    left: 4%;
+    animation: animate 10s linear infinite ;
+}
+@keyframes animate {
+    0%{
+        transform: scale(0) translateY(0) rotate(360deg);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1.5) translateY(-90px) rotate(-180deg);
+        border-radius: 50%;
+        opacity: 0;
+    
+    }
+}
+/*Fin Fondo */
 circle {
     fill: none;
     stroke: #6d6d6d;
@@ -120,7 +191,7 @@ circle:nth-child(2) {
     stroke-width: 3;
     stroke-dasharray: 0 100;
     transform: rotate(-90deg);
-    animation: expand 2s linear forwards;
+    animation: expand 2.5s linear forwards;
 }
 
 circle:nth-child(3){
@@ -128,7 +199,7 @@ circle:nth-child(3){
     stroke-width: 1;
     stroke-dasharray: 0  100;
     transform: rotate(-86deg);
-    animation: expandInner 2s linear forwards;
+    animation: expandInner 2.5s linear forwards;
 
 }
 .perfil-porcentaje {
@@ -137,13 +208,15 @@ circle:nth-child(3){
     justify-content: center;
     align-items: center;
 }
-
 .perfil-porcentaje .ranking-img {
     position: absolute;
     display: inline-block;
     border-radius: 50%;
     width: 55px;
     height: 55px;
+}
+a:hover img{
+    transform: scale(1.1);
 }
 [data-top][data-icon-top]::after, [data-top][data-icon-bottom]::after {
     content:attr(data-top) ;
@@ -167,15 +240,11 @@ circle:nth-child(3){
 [data-icon-bottom]::after {
     content: attr(data-icon-bottom);
     position: absolute;
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--rojo);
-    bottom: -.4rem;
-    left: .6rem;
-}
-th{
-    position: relative;
-    width: 45%;
+    bottom: 1.3rem;
+    left: 1.2rem;
 }
 [data-icon-top]::before {
     content: attr(data-icon-top);
@@ -184,7 +253,7 @@ th{
     font-weight: bold;
     color: var(--rojo);
     top: 1rem;
-    left: 1.1rem;
+    left: 1.2rem;
 }
 [data-icon-top]::before{
     color:var(--celeste);
@@ -210,4 +279,29 @@ th{
     to{
         stroke-dasharray: var(--dentro) 100;
     }
+}
+@media screen and (max-width: 768px){
+    .col-1, .col-2, .col-3, .col{
+        padding: 0%;
+    }
+    .col{
+        padding-left: 0.3rem;
+    }
+    [data-icon-bottom]::after{
+        left: .4rem;
+    }
+    [data-icon-top]::before{
+        left: .4rem;
+    }
+}
+
+/*Perfil*/
+.progress-bar{
+    animation: expand_progress 2.5s ease forwards ;
+}
+@keyframes expand_progress{
+    to{
+        width: 75%;
+    }
+    
 }
