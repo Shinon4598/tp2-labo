@@ -52,7 +52,7 @@ h4{
 .card-body{
     z-index: 2;
 }
-.card{
+main .card{
     position: relative;
     cursor: pointer;
     overflow: hidden;
@@ -68,9 +68,9 @@ main section > .card:hover::before{
     content: "";
     position: absolute;
     top: 20%;
-    left: -20vw;
+    left: -20%;
     width: 140%;
-    height: 20vw;
+    height: 200%;
     background-image: linear-gradient(var(--celeste), var(--amarillo));
     animation: rotate 3s infinite linear;
 }
@@ -110,7 +110,7 @@ main section> .card:hover::after{
 }
 /*Fondo */
 .bg-contenedor{
-    background-color: rgba(21, 19, 30, 0.87);
+    background-color: rgba(21, 19, 30, 0.80);
     overflow: hidden;
 }
 .bg-body{
@@ -129,9 +129,9 @@ main section> .card:hover::after{
     background-color: transparent;
     border: 6px solid var(--primary-color);
     border-color: var(--amarillo);
-
 }
 .bg-body > div:nth-child(even){
+    border-radius: 50%;
     border-color: var(--primary-color);
 }
 .bg-body > div:nth-child(1){
@@ -142,28 +142,28 @@ main section> .card:hover::after{
 .bg-body > div:nth-child(2){
     top: 90%;
     left: 2%;
-    animation: animate 10s linear infinite ;
+    animation: animate2 8s linear infinite ;
 
 }
 .bg-body > div:nth-child(3){
     top: 67%;
     left: 10%;
-    animation: animate 10s linear infinite ;
+    animation: animate 16s linear infinite ;
 }
 .bg-body > div:nth-child(4){
     top: 57%;
     left: 88%;
-    animation: animate 10s linear infinite ;
+    animation: animate2 13s linear infinite ;
 }
 .bg-body > div:nth-child(5){
     top: 91%;
     left: 91%;
-    animation: animate 10s linear infinite ;
+    animation: animate 15s linear infinite ;
 }
 .bg-body > div:nth-child(6){
     top: 44%;
     left: 4%;
-    animation: animate 10s linear infinite ;
+    animation: animate2 9s linear infinite ;
 }
 @keyframes animate {
     0%{
@@ -173,6 +173,18 @@ main section> .card:hover::after{
     100%{
         transform: scale(1.5) translateY(-90px) rotate(-180deg);
         border-radius: 50%;
+        opacity: 0;
+    
+    }
+}
+@keyframes animate2 {
+    0%{
+        transform: scale(0) translateY(0) rotate(360deg);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1.5) translateY(-90px) rotate(-180deg);
+        border-radius: 0%;
         opacity: 0;
     
     }
@@ -304,4 +316,53 @@ a:hover img{
         width: 75%;
     }
     
+}
+.global-ranking{
+    background-image: linear-gradient(to top, rgb(59, 24, 141,0.70), rgb(23, 24, 41,0.02));
+}
+.hexagono{
+    width: 5rem;
+    height: 5rem;
+    clip-path: polygon(51% 100%, 100% 70%, 82% 0, 19% 0, 0 70%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hexagono:hover{
+    transform: scale(1.1);
+}
+.overflow-x-auto div:nth-child(1) > .hexagono{
+    background-color: #5d2437;
+}
+.overflow-x-auto div:nth-child(2n) > .hexagono{
+    background-color: #472e70;
+}
+.overflow-x-auto div:nth-child(3n) > .hexagono{
+    background-color: #36177e;
+}
+.overflow-x-auto div:nth-child(5n) > .hexagono{
+    background-color: #232d79;
+}
+.border-hexagono{
+    width: 5.4rem;
+    height: 5.4rem;
+    clip-path: polygon(51% 100%, 100% 70%, 82% 0, 19% 0, 0 70%);
+    position: absolute;
+    top: -4%;
+}
+.overflow-x-auto div:nth-child(1) > .border-hexagono{
+    background-color: #854454;
+}
+.overflow-x-auto div:nth-child(2n) > .border-hexagono{
+    background-color: #7761a0;
+}
+.overflow-x-auto div:nth-child(3n) > .border-hexagono{
+    background-color: #5428cc;
+}
+.overflow-x-auto div:nth-child(5n) > .border-hexagono{
+    background-color: #39479d;
+}
+.overflow-x-auto::-webkit-scrollbar{
+    width: 0;
 }
